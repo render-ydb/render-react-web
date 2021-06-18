@@ -12,7 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Icon
       name='SmileFilled'
-      theme='warning'
+      theme='info'
       twoToneColor='green'
     />
      <Icon

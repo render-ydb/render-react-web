@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import {prefix} from '../../utils/constant'
 import *  as antIcons from '@ant-design/icons'
 
-type ThememProps = 'primary' | 'info' | 'success' | 'processing' | 'error' | 'highlight' | 'warning' | 'normal' | 'white' | 'black';
+type ThememProps = 'primary' | 'info' | 'success' | 'error' | 'white' | 'black';
 
 
 interface IconProps {
