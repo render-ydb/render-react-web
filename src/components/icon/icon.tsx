@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react'
 import classNames from 'classnames'
+import {prefix} from '../../utils/constant'
 import *  as antIcons from '@ant-design/icons'
 
 type ThememProps = 'primary' | 'info' | 'success' | 'processing' | 'error' | 'highlight' | 'warning' | 'normal' | 'white' | 'black';
@@ -27,7 +28,7 @@ const Icon: React.FC<IconProps> = ({
     const AntIcon = antIcons[name] as any;
     const realClassNames = classNames(
         {
-            [`rrw-icon-${theme}`]: theme
+            [`${prefix}-icon-${theme}`]: theme
         },
         className
     );
