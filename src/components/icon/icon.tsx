@@ -6,7 +6,7 @@ import *  as antIcons from '@ant-design/icons'
 type ThememProps = 'primary' | 'info' | 'success' | 'error' | 'white' | 'black';
 
 
-interface IconProps {
+export interface IconProps {
     theme?: ThememProps,
     className?: string,
     rotate?: number,

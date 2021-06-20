@@ -79,7 +79,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": [
@@ -154,9 +156,16 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins":[
+      ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
     "@types/react-fontawesome": "^1.6.4",
     "less": "^4.1.1"
   }
