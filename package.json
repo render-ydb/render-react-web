@@ -2,6 +2,9 @@
   "name": "render-react-web",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@ant-design/icons": "^4.0.0",
     "@babel/core": "7.12.3",
@@ -77,11 +80,14 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
+    "clean": "rimraf ./dist",
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "npm run clean && npm run build:less && npm run build:ts",
     "test": "node scripts/test.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build:ts": "tsc -p tsconfig.build.json",
+    "build:less": "lessc --js src/styles/index.less dist/index.css"
   },
   "eslintConfig": {
     "extends": [
@@ -157,8 +163,13 @@
     "presets": [
       "react-app"
     ],
-    "plugins":[
-      ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+    "plugins": [
+      [
+        "@babel/plugin-proposal-private-property-in-object",
+        {
+          "loose": true
+        }
+      ]
     ]
   },
   "devDependencies": {
@@ -167,6 +178,7 @@
     "@storybook/addon-links": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "@types/react-fontawesome": "^1.6.4",
-    "less": "^4.1.1"
+    "less": "^4.1.1",
+    "rimraf": "^3.0.2"
   }
 }
