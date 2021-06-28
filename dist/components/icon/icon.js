@@ -13,7 +13,6 @@ export var Icon = function (_a) {
     return (React.createElement(AntIcon, { style: style, rotate: rotate, spin: spin, className: realClassNames, twoToneColor: twoToneColor }));
 };
 Icon.defaultProps = {
-    theme: 'black',
     spin: false
 };
 export default Icon;

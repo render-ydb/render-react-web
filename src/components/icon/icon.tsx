@@ -4,7 +4,7 @@ import {prefix} from '../../utils/constant'
 import *  as antIcons from '@ant-design/icons'
 
 type ThememProps = 'primary' | 'info' | 'success' | 'error' | 'white' | 'black';
-
+type IconTypeProps = keyof typeof antIcons;
 
 export interface IconProps {
     /**设置图标内置主题*/
@@ -20,7 +20,7 @@ export interface IconProps {
     /**仅适用双色图标。设置双色图标的主要颜色*/
     twoToneColor?: string,
     /**所要展示图标的名称*/
-    name: keyof typeof antIcons
+    name: IconTypeProps
 };
 
 export const Icon: React.FC<IconProps> = ({
@@ -51,7 +51,6 @@ export const Icon: React.FC<IconProps> = ({
     )
 }
 Icon.defaultProps = {
-    theme : 'black',
     spin:false
 }
 export default Icon;

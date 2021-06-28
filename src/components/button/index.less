@@ -1,0 +1,154 @@
+
+
+
+.handleSize(@height,@paddingTb,@paddingLr,@fontSize,@borderRadius){
+    height: @height;
+    padding: @paddingTb @paddingLr;
+    font-size: @fontSize;
+    border-radius: @borderRadius;
+};
+.handleType(@color,@backgroundColor,@borderColor) {
+    color: @color;
+    background: @backgroundColor;
+    border-color: @borderColor;
+  };
+// 基础样式
+.@{prefix}-btn{
+    line-height: 1.5715;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    box-shadow: 0 2px #00000004;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.645,.045,.355,1);
+    user-select: none;
+    touch-action: manipulation;
+    .handleSize(32px,4px,15px,14px,2px);
+    color: #000000d9;
+    background: #fff;
+    border-color: #d9d9d9;
+    cursor: pointer;
+    & > span{
+        display: inline-block;
+       
+    }
+    &-loading{
+        position: relative;
+        pointer-events: none;
+    }
+    &-loading::before{
+        display: block;
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        z-index: 1;
+        background: #fff;
+        border-radius: inherit;
+        opacity: 0.35;
+        transition: opacity 0.2s;
+        content: '';
+        pointer-events: none;
+    }
+    &:hover,&:focus,&:active{
+        border-color: @blue-6;
+        color: @blue-6;
+        background: #fff;
+        text-decoration: none;
+    }
+    &:not([disabled]):hover {
+        text-decoration: none;
+    }
+    &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active,&&-disabled ,&&-disabled:hover,&&-disabled:focus{
+        .handleType(rgba(0, 0, 0, 0.25),#f5f5f5,#d9d9d9);
+        text-shadow: none;
+        box-shadow: none;
+        cursor: not-allowed
+    }
+    &&-disabled{
+        border-color: transparent !important;
+        background-color: transparent !important;
+    }
+
+    &-icon-only{
+        width: 32px;
+        height: 32px;
+        padding: 2.4px 0 !important;
+        font-size: 16px;
+        border-radius: 2px;
+        vertical-align: -1px;
+    }
+  
+}
+
+
+// type样式
+  .@{prefix}-btn-primary {
+    .handleType(#fff,@blue-6,@blue-6);
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 2px 0 rgb(0 0 0 / 5%);
+    &:hover,&:focus{
+        .handleType(#fff,@blue-5,@blue-5);
+    }
+}
+.@{prefix}-btn-dashed {
+    .handleType(rgba(0, 0, 0, 0.85),#fff,#d9d9d9);
+    border-style: dashed;
+}
+.@{prefix}-btn-link {
+    .handleType(@blue-6,transparent,transparent);
+    box-shadow: none;
+    &:hover, &:focus,&:active{
+        .handleType(@blue-5,transparent,transparent);
+    }
+}
+
+.@{prefix}-btn-text {
+    .handleType(rgba(0, 0, 0, 0.85),transparent,transparent);
+    box-shadow: none;
+    &:hover,&:focus{
+        .handleType(rgba(0, 0, 0, 0.85),rgba(0, 0, 0, 0.018),transparent);
+    }
+}
+
+.@{prefix}-btn-danger {
+    .handleType(#fff,@red-base,@red-base);
+    box-shadow: none;
+    &:hover,&:focus{
+        color: #fff;
+        background: @red-5;
+        border-color: @red-5;
+    }
+}
+
+// size样式
+.@{prefix}-btn-large {
+    .handleSize(40px,6.4px,15px,16px,2px);
+}
+
+.@{prefix}-btn-small {
+    .handleSize(24px,0,7px,14px,2px);
+}
+// shape样式
+.@{prefix}-btn-circle {
+    min-width: 32px;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+    border-radius: 50%;
+}
+.@{prefix}-btn-round {
+    height: 32px;
+    padding: 4px 16px;
+    font-size: 14px;
+    border-radius: 32px;
+}
+// block样式
+.@{prefix}-btn-block {
+   width: 100%;
+}

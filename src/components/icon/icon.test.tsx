@@ -5,7 +5,6 @@ test('icon是否存在文档中', () => {
     const wrapper = render(<Icon name='AimOutlined'></Icon>);
     const element = wrapper.getByRole('img');
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass('rrw-icon-black')
 })
 
 describe('测试icon组件是否显示对应的主题色', () => {

@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react';
 import * as antIcons from '@ant-design/icons';
 declare type ThememProps = 'primary' | 'info' | 'success' | 'error' | 'white' | 'black';
+declare type IconTypeProps = keyof typeof antIcons;
 export interface IconProps {
     /**设置图标内置主题*/
     theme?: ThememProps;
@@ -15,7 +16,7 @@ export interface IconProps {
     /**仅适用双色图标。设置双色图标的主要颜色*/
     twoToneColor?: string;
     /**所要展示图标的名称*/
-    name: keyof typeof antIcons;
+    name: IconTypeProps;
 }
 export declare const Icon: React.FC<IconProps>;
 export default Icon;
