@@ -6,6 +6,7 @@
         "declaration": true,
         "jsx": "react",
         "moduleResolution": "node",
+        "strictNullChecks":true,
         "allowSyntheticDefaultImports": true
     },
     "include": [

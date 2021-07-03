@@ -103,7 +103,7 @@ Button.defaultProps = {
     target: '_blank',
     type: 'primary',
     size: 'middle',
-    loading:true
+    loading:false
 }
 
 
