@@ -2,9 +2,6 @@ import React from 'react';
 import * as antIcons from '@ant-design/icons';
 declare type IconTypeProps = keyof typeof antIcons;
 declare type ShapeProps = 'circle' | 'round';
-declare type loadingProps = boolean | {
-    delay: number;
-};
 declare type SizeProps = 'large' | 'middle' | 'small';
 declare type TypeProps = 'primary' | 'dashed' | 'link' | 'text' | 'default' | 'danger';
 export interface BaseButtonProps {
@@ -19,7 +16,9 @@ export interface BaseButtonProps {
     /**设置按钮的图标组件*/
     icon?: IconTypeProps;
     /**设置按钮载入状态*/
-    loading?: loadingProps;
+    loading?: (boolean | {
+        delay: number;
+    });
     /**设置按钮形状*/
     shape?: ShapeProps;
     /**设置按钮大小*/
