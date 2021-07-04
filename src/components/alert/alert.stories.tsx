@@ -14,9 +14,7 @@ export const Primary = Template.bind({});
 Primary.storyName ='alert'
 Primary.args = {
   type:'success',
-  // message:<div>22dsd2</div>,
-  message:()=>{
-    return <div>3331111</div>
-  },
+  message:22222,
+  // message:()=><div>3331111</div>,
   description:'das'
 };

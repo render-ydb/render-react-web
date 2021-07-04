@@ -6,13 +6,13 @@ import *  as antIcons from '@ant-design/icons'
 
 
 type TypeProps = 'success' | 'info' | 'warning' | 'error';
-type MessageFun =  () => ReactElement;
+type MessageFun = ()=>React.ReactElement;
 
 export interface AlertProps {
     /**指定警告提示的样式*/
     type:TypeProps,
     /**警告提示内容*/
-    message:ReactElement | MessageFun,
+    message:string | ReactElement | MessageFun| number,
     /**警告提示的辅助性文字介绍*/
     description?:String | ReactNode ,
     /**自定义className */
@@ -34,11 +34,17 @@ export const Alert: React.FC<AlertProps> = (props) => {
         `${prefix}-alert-${type}`,
         className
     );
-    console.log(message)
+    // console.log(message)
+    const handleMessage = ()=>{
+        if (typeof message === 'function') {
+           return message();
+        }
+       return message
+    }
     return (
         <div className={realClassNames}>
             <div className={`${prefix}-alert-content`}>
-                <div className={`${prefix}-alert-message`}>{message}</div>
+                <div className={`${prefix}-alert-message`}>{handleMessage()}</div>
                 <div className={`${prefix}-alert-description`}>{description}</div>
             </div>
         </div>
