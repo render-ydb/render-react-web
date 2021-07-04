@@ -14,13 +14,13 @@ export interface AlertProps {
     /**警告提示内容*/
     message:string | ReactNode | MessageFun,
     /**警告提示的辅助性文字介绍*/
-    description?:String | ReactNode ,
+    description?:string | ReactNode ,
     /**自定义className */
-    className?:String,
+    className?:string,
     /**是否显示关闭按钮 */
-    closable?:Boolean,
+    closable?:boolean,
     /**是否显示图标 */
-    showIcon?:Boolean
+    showIcon?:boolean
 }
 interface TypeObj {
     [proppName:string]:{
