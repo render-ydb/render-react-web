@@ -15,6 +15,7 @@ Primary.storyName ='alert'
 Primary.args = {
   type:'success',
   message:22222,
-  // message:()=><div>3331111</div>,
+  closable:true,
+  showIcon:true,
   description:'das'
 };
