@@ -83,10 +83,9 @@
   },
   "scripts": {
     "clean": "rimraf ./dist",
-    "start": "node scripts/start.js",
+    "start": "start-storybook -p 6006",
     "build": "npm run clean && npm run build:less && npm run build:ts",
     "test": "node scripts/test.js",
-    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build:ts": "tsc -p tsconfig.build.json",
     "build:less": "lessc --js src/styles/index.less dist/index.css"

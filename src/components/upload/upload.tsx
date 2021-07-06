@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef } from 'react'
+import React, { ChangeEvent, useRef, useState } from 'react'
 import { prefix } from '../../utils/constant'
 import Button from '../button'
 import axios from 'axios'
@@ -30,41 +30,41 @@ export interface UploadProps {
     onChange?: (file: File) => void
 }
 
-export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error'
+export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error' | 'uploading'
 
 export interface UploadFile {
     /**
      * 文件的唯一标识
     */
-    uuid:string,
+    uuid: string,
     /**
      * 文件大小
     */
-    size:number,
+    size: number,
     /**
      * 文件名称
     */
-    name:string,
+    name: string,
     /**
      * 文件状态
     */
-    status?:UploadFileStatus,
+    status?: UploadFileStatus,
     /**
      * 文件上传进度
     */
-    percent?:number,
+    percent?: number,
     /**
      * 文件原始信息
     */
-    raw?:File,
+    raw?: File,
     /**
      * 文件上传成功后的结果
     */
-    response?:any,
+    response?: any,
     /**
      * 文件上传失败后的结果
     */
-    error?:any
+    error?: any
 }
 
 export const Upload: React.FC<UploadProps> = props => {
@@ -77,6 +77,19 @@ export const Upload: React.FC<UploadProps> = props => {
         onChange
     } = props;
     const fileInput = useRef<HTMLInputElement>(null);
+
+    const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+    const updateFileList = (uploadFile: UploadFile, uploadObj: Partial<UploadFile>) => {
+        setFileList(prevFileList => {
+            return prevFileList.map(file => {
+                if (file.uuid === uploadFile.uuid) {
+                    return { ...file, ...uploadObj }
+                }
+                return file
+            })
+        })
+    }
 
     const handleFileInputClick = () => {
         if (fileInput.current) {
@@ -113,6 +126,15 @@ export const Upload: React.FC<UploadProps> = props => {
         });
     }
     const postFile = (file: File) => {
+        const initFileInfo:UploadFile = {
+            uuid: Date.now + 'file',
+            size: file.size,
+            name: file.name,
+            raw: file,
+            percent: 0,
+            status: 'ready'
+        };
+        setFileList([initFileInfo, ...fileList])
         const formData = new FormData();
         formData.append(file.name, file);
         axios.post(action, formData, {
@@ -121,21 +143,24 @@ export const Upload: React.FC<UploadProps> = props => {
             },
             onUploadProgress: (e) => {
                 let percentage = Math.round((e.loaded * 100) / e.total) || 0;
-                console.log(percentage)
+                console.log(percentage);
+                updateFileList(initFileInfo,{percent:percentage,status:'uploading'})
                 if (percentage < 100) {
                     onProgress && onProgress(percentage, file);
                 }
             }
         }).then(res => {
-            console.log(res);
+            updateFileList(initFileInfo,{percent:1,status:'success'})
             onSuccess && onSuccess(res, file)
         }).catch(err => {
             console.log(err);
+            updateFileList(initFileInfo,{percent:1,status:'error'})
             onError && onError(err, file)
         }).finally(() => {
             onChange && onChange(file)
         })
     }
+    console.log(fileList)
     return (
         <div>
             <Button
