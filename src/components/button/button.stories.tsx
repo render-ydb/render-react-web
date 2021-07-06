@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react';
 
 import  { Button,ButtonProps } from './button';
 
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
   title: 'Button 按钮',
   component: Button,

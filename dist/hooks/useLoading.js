@@ -8,6 +8,9 @@ export default (function (loading) {
                 setLoaingVisible(false);
             }, loading === null || loading === void 0 ? void 0 : loading.delay);
         }
+        else {
+            setLoaingVisible(loading);
+        }
         return function () {
             if (typeof loading !== 'boolean') {
                 clearTimeout(timer);
