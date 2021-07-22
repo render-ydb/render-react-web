@@ -46,6 +46,11 @@
     "prepublish": "npm run test:nowatch && npm run lint && npm run build",
     "precommit":"npm run test:nowatch && npm run lint"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo 'husky' && npm run lint"
+    }
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
