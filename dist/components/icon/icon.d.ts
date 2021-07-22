@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import * as antIcons from '@ant-design/icons';
 declare type ThememProps = 'primary' | 'info' | 'success' | 'error' | 'white' | 'black';
-declare type IconTypeProps = keyof typeof antIcons;
+export declare type IconTypeProps = keyof typeof antIcons;
 export interface IconProps {
     /**设置图标内置主题*/
     theme?: ThememProps;

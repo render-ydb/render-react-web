@@ -1,0 +1,169 @@
+.@{prefix}-menu{
+    box-sizing: border-box;
+    margin: 0;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    font-feature-settings: "tnum";
+    padding: 0;
+    color: #000000d9;
+    font-size: 14px;
+    line-height: 0;
+    text-align: left;
+    list-style: none;
+    background: #fff;
+    outline: none;
+    box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+    transition: background .3s,width .3s cubic-bezier(.2,0,0,1) 0s;
+    display: flex;
+
+    &-vertical{
+        flex-direction: column;
+        box-shadow: none;
+        border-right: 1px solid #f0f0f0;
+    }
+    &-horizontal{
+        flex-direction: row;
+        line-height: 46px;
+        border: 0;
+        border-bottom: 1px solid #f0f0f0;
+        box-shadow: none;
+    }
+}
+
+.@{prefix}-menu-title-content {
+    margin-left: 10px;
+    opacity: 1;
+    transition: opacity .3s cubic-bezier(.645,.045,.355,1),margin .3s,color .3s;
+}
+
+// meunItem样式
+.@{prefix}-menu-item{
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0 20px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color .3s,background .3s,padding .3s cubic-bezier(.645,.045,.355,1);
+  
+    &-disabled{
+        color: #00000040!important;
+        background: 0 0;
+        cursor: not-allowed;
+        &:hover::after{
+            border-color: transparent !important;
+        }
+    }
+    &-selected,&:hover{
+        color: #1890ff;
+    }
+    &-horizontal{
+        margin-top: -1px;
+        margin-bottom: 0;
+        padding: 0 20px;
+        &::after{
+            position: absolute;
+            right: 20px;
+            bottom: 0;
+            left: 20px;
+            border-bottom: 2px solid transparent;
+            transition: border-color .3s cubic-bezier(.645,.045,.355,1);
+            content: "";
+
+        }
+        &:hover::after {
+            border-bottom: 2px solid #1890ff;
+        }
+    }
+    &-vertical{
+        height: 40px;
+        line-height: 40px;
+        list-style-position: inside;
+        list-style-type: disc;
+        &::after{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            border-right: 3px solid #1890ff;
+            transform: scaleY(.0001);
+            opacity: 0;
+            transition: transform .15s cubic-bezier(.215,.61,.355,1),opacity .15s cubic-bezier(.215,.61,.355,1);
+            content: "";
+        }
+        &:hover{
+            background-color: #e6f7ff;
+        }
+        &:hover::after{
+            transform: scaleY(1);
+            opacity: 1;
+            transition: transform .15s cubic-bezier(.645,.045,.355,1),opacity .15s cubic-bezier(.645,.045,.355,1);
+        }
+    }
+}
+.@{prefix}-menu-item-selected.@{prefix}-menu-item-horizontal::after{
+    border-bottom: 2px solid #1890ff;
+}
+.@{prefix}-menu-item-selected.@{prefix}-menu-item-vertical{
+    background-color: #e6f7ff;
+    &::after{
+        transform: scaleY(1);
+        opacity: 1;
+        transition: transform .15s cubic-bezier(.645,.045,.355,1),opacity .15s cubic-bezier(.645,.045,.355,1); 
+    }
+}
+
+// subMenu样式
+.@{prefix}-subMenu{
+    padding-bottom: .02px;
+    cursor: pointer;
+    position: relative;
+    &-selected,&:hover  &-title{
+        color: #1890ff;
+    }
+    &-vertical li{
+        padding-left: 48px !important;
+    }
+    &-horizontal .@{prefix}-subMenu-child-list{
+        position: absolute;
+        left: 0;
+        top: 102%;
+        min-width: 160px;
+        background-color: #fff;
+        box-shadow: 0 15px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid #f0f0f0;
+        &-active li::after{
+            display: none !important;
+        }
+        
+    }
+    &-title{
+        height: 40px;
+        line-height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        &-icon{
+            font-size: 14px;
+        }
+        &-text{
+            margin-left: 10px;
+            flex: 1;
+        }
+        &-arrow{
+            font-size: 10px;
+            font-weight: 550;
+            transform: rotate(0);
+            transition: transform .3s;
+            &-active{
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+.@{prefix}-subMenu-child-list{
+    display: none;
+    &-active{
+        display: block;
+    }
+}

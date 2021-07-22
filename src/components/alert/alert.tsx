@@ -1,7 +1,7 @@
 import React, { ReactNode,useEffect,useState  } from 'react'
 import classNames from 'classnames'
 import { prefix } from '../../utils/constant'
-import Icon from '../icon'
+import Icon from '../Icon'
 import *  as antIcons from '@ant-design/icons'
 import { stringify } from 'querystring'
 type IconTypeProps = keyof typeof antIcons;

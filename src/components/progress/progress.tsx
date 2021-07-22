@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 import classNames from 'classnames'
 import { prefix } from '../../utils/constant'
-import Icon from '../icon'
+import Icon from '../Icon'
 
 
 
@@ -15,6 +15,8 @@ export interface ProgressProps {
     status?: "success" | "exception" | "normal",
     /**进度条长度*/
     width?: number | string,
+    /**进度条高度*/
+    height?: number | string,
     /**进度条的色彩*/
     strokeColor?: string,
     /**进度条的样式*/
@@ -22,7 +24,9 @@ export interface ProgressProps {
     /**未完成分段的颜色*/
     trailColor?: string
     /**进度条尺寸*/
-    size?: 'normal' | 'small'
+    size?: 'normal' | 'small',
+    /**是否显示进度数值或状态图标*/
+    showInfo?: boolean,
 };
 
 export const Progress: React.FC<ProgressProps> = (props) => {
@@ -34,7 +38,9 @@ export const Progress: React.FC<ProgressProps> = (props) => {
         strokeColor,
         strokeLinecap,
         trailColor,
-        size
+        size,
+        showInfo,
+        height
     } = props;
 
     const _percent = Math.min.apply(null, [percent || 0, 100]);
@@ -67,22 +73,34 @@ export const Progress: React.FC<ProgressProps> = (props) => {
 
     const handleText = () => {
         if (success) {
-            return <Icon name='CheckCircleOutlined'/>
+            return <Icon name='CheckCircleOutlined' />
         } else if (exception) {
-            return <Icon name='CloseCircleOutlined'/>
+            return <Icon name='CloseCircleOutlined' />
         }
 
         return format ? format(percent || 0) : _percent + '%'
     }
 
     return (
-        <div className={`${prefix}-progress`} style={{ width: width ? width + 'px' : '100%' }}>
+        <div className={`${prefix}-progress`} style={{ width: width ? (typeof width === 'number' ? width + 'px' : width) :'100%' }}>
             <div className={progressInner} style={{ backgroundColor: trailColor }}>
-                <div className={progressBgClassNames} style={{ width: percent + '%', backgroundColor: strokeColor }}></div>
+                <div
+                    className={progressBgClassNames}
+                    style={{
+                        width: percent + '%',
+                        backgroundColor: strokeColor,
+                        height: height ? (typeof height === 'number' ? height + 'px' : height) : (size === 'small' ? '6px' : '8px')
+                    }}>
+
+                </div>
             </div>
-            <div className={progressText} title={_percent + ''}>
-                {handleText()}
-            </div>
+            {
+                showInfo &&
+                <div className={progressText} title={_percent + ''}>
+                    {handleText()}
+                </div>
+            }
+
         </div>
     )
 }
@@ -93,5 +111,7 @@ Progress.defaultProps = {
     strokeLinecap: 'round',
     strokeColor: "#1890ff",
     trailColor: "#f5f5f5",
+    showInfo: true,
+    height: 8
 }
 export default Progress;

@@ -1,10 +1,10 @@
 import React, { CSSProperties } from 'react'
 import classNames from 'classnames'
-import {prefix} from '../../utils/constant'
+import { prefix } from '../../utils/constant'
 import *  as antIcons from '@ant-design/icons'
 
 type ThememProps = 'primary' | 'info' | 'success' | 'error' | 'white' | 'black';
-type IconTypeProps = keyof typeof antIcons;
+export type IconTypeProps = keyof typeof antIcons;
 
 export interface IconProps {
     /**设置图标内置主题*/
@@ -51,6 +51,6 @@ export const Icon: React.FC<IconProps> = ({
     )
 }
 Icon.defaultProps = {
-    spin:false
+    spin: false
 }
 export default Icon;

@@ -23,7 +23,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 import React from 'react';
 import classNames from 'classnames';
 import { prefix } from '../../utils/constant';
-import Icon from '../icon';
+import Icon from '../Icon';
 import useLoading from '../../hooks/useLoading';
 export var Button = function (props) {
     var _a;
@@ -56,6 +56,6 @@ Button.defaultProps = {
     target: '_blank',
     type: 'primary',
     size: 'middle',
-    loading: true
+    loading: false
 };
 export default Button;

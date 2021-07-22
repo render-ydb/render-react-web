@@ -1,2 +1,2 @@
-import Icon from './progress'
-export default Icon;
+import Progress from './progress'
+export default Progress;

@@ -1,2 +1,2 @@
-import Transition from './upload'
-export default Transition;
+import Upload from './upload'
+export default Upload;

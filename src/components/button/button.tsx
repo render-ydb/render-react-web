@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { prefix } from '../../utils/constant'
-import Icon from '../icon'
+import Icon from '../Icon'
 import *  as antIcons from '@ant-design/icons'
 import useLoading from '../../hooks/useLoading'
 
