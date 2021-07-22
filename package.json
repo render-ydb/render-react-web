@@ -45,9 +45,9 @@
     "build:less": "lessc --js src/styles/index.less dist/index.css",
     "prepublish": "npm run test:nowatch && npm run lint && npm run build"
   },
-  "husky":{
-    "hooks":{
-      "pre-commit":"npm run test:nowatch && npm run lint"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:nowatch && npm run lint"
     }
   },
   "eslintConfig": {
