@@ -43,7 +43,7 @@
     "build-storybook": "build-storybook",
     "build:ts": "tsc -p tsconfig.build.json",
     "build:less": "lessc --js src/styles/index.less dist/index.css",
-    "prepublish": "npm run test:nowatch && npm run lint && npm run build",
+    "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build",
     "precommit":"npm run test:nowatch && npm run lint"
   },
   "husky": {
