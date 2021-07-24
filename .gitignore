@@ -11,6 +11,9 @@
 # production
 /build
 
+# stroybook
+/stroybook-static
+
 # misc
 .DS_Store
 .env.local
