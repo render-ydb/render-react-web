@@ -44,7 +44,8 @@
     "build:ts": "tsc -p tsconfig.build.json",
     "build:less": "lessc --js src/styles/index.less dist/index.css",
     "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build",
-    "precommit": "npm run test:nowatch && npm run lint"
+    "precommit": "npm run test:nowatch && npm run lint",
+    "ydb":"echo 'ydb'"
   },
   "husky": {
     "hooks": {
