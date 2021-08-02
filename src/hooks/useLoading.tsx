@@ -18,6 +18,6 @@ export default (loading: boolean | { delay: number }) => {
         }
 
     }, [loading]);
-    return loadingVisible
+    return loadingVisible;
 }
 
