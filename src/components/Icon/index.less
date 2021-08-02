@@ -1,0 +1,11 @@
+each(@theme-colors, {
+    .@{prefix} {
+        &-icon-@{key} {
+            color: @value;
+         }
+    }
+  
+});
+.@{prefix}-icon {
+    color: inherit;
+}
